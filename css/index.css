@@ -1,0 +1,35 @@
+#damier{
+    display: flex;
+    width: fit-content;
+    border: solid 1px black;
+}
+.row{
+    width: fit-content;
+    height: fit-content;
+}
+.col{    
+    width: 50px;
+    height: 50px;
+    border: solid 1px;
+}
+.beige{
+    background-color: beige;
+}
+.black{
+    background-color: black;
+}
+.pion{
+    border-radius: 100%;
+    width: 48px;
+    height: 48px;
+    border: solid 1px black;
+}
+.bg-blue{
+    background-color: blue;
+}
+.j1{
+    background-color: red;
+}
+.j2{
+    background-color: greenyellow;
+}
