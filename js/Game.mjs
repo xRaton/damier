@@ -51,7 +51,6 @@ export default class Game {
         this.selectedPon=[]
         this.selectedPon.push(ev.target)
         let position = ev.target.parentElement
-        console.log(position)
         this.caseLibre(position)
     }
     
@@ -70,6 +69,7 @@ export default class Game {
         }
         this.enemyPon=[]
         this.possibleMove=[]
+        console.log(this.enemyPon)
         if(caseRT!==null && caseRT!==undefined && caseRT.childElementCount===0 && this.selectedPon[0].className.includes('j1')=== true||caseRT!==null && caseRT!==undefined && caseRT.childElementCount===0 && this.selectedPon[0].className.includes('queen')=== true){
             caseRT.classList.add('bg-blue')
             this.possibleMove.push({
@@ -207,6 +207,27 @@ export default class Game {
                 elem : newCase,
             })
             this.loopCaseRT(newCase)
+        }else if(newCase!==null && newCase!==undefined && newCase.childElementCount===1){
+            if(this.selectedPon[0].className===newCase.firstElementChild.className){
+                
+            }else{
+                this.enemyPon.push({
+                    direction : 'RT',
+                    elem : newCase
+                })
+                newCase = this.checkCaseRT(newCase)
+                if(newCase!==null && newCase!==undefined && newCase.childElementCount===0){
+                    newCase.classList.add('bg-blue')
+                    this.possibleMove.push({
+                        direction : 'RT',
+                        elem : newCase
+                    })
+                    this.loopCaseRT(newCase)
+                }else if(newCase===null||newCase===undefined||newCase.childElementCount===1){
+                    this.enemyPon.pop()
+                    return
+                }
+            } 
         }else return 
     }
     unTrucRB(newCase){
@@ -217,6 +238,27 @@ export default class Game {
                 elem : newCase,
             })
             this.loopCaseRB(newCase)
+        }else if(newCase!==null && newCase!==undefined && newCase.childElementCount===1){
+            if(this.selectedPon[0].className===newCase.firstElementChild.className){
+                
+            }else{
+                this.enemyPon.push({
+                    direction : 'RB',
+                    elem : newCase
+                })
+                caseRB = this.checkCaseRB(newCase)
+                if(newCase!==null && caseRB!==undefined && newCase.childElementCount===0){
+                    newCase.classList.add('bg-blue')
+                    this.possibleMove.push({
+                        direction : 'RB',
+                        elem : newCase
+                    })
+                    this.loopCaseRB(newCase)
+                }else if(newCase===null || newCase===undefined || newCase.childElementCount===1){
+                    this.enemyPon.pop()
+                    return
+                }
+            }
         }else return 
     }
     unTrucLT(newCase){
@@ -227,6 +269,27 @@ export default class Game {
                 elem : newCase,
             })
             this.loopCaseLT(newCase)
+        }if(newCase!==null && newCase!==undefined && newCase.childElementCount===1){
+            if(this.selectedPon[0].className===newCase.firstElementChild.className){
+                
+            }else{
+                this.enemyPon.push({
+                    direction : 'LT',
+                    elem : newCase
+                })
+                newCase = this.checkCaseLT(newCase)
+                if(newCase!==null && newCase!==undefined && newCase.childElementCount===0){
+                    newCase.classList.add('bg-blue')
+                    this.possibleMove.push({
+                        direction : 'LT',
+                        elem : newCase
+                    })
+                    this.loopCaseLT(newCase)
+                }else if(newCase===null || newCase===undefined || newCase.childElementCount===1){
+                    this.enemyPon.pop()
+                    return
+                }
+            } 
         }else return 
     }
     unTrucLB(newCase){
@@ -237,6 +300,27 @@ export default class Game {
                 elem : newCase,
             })
             this.loopCaseLB(newCase)
+        }if(newCase!==null && newCase!==undefined && newCase.childElementCount===1){
+            if(this.selectedPon[0].className===newCase.firstElementChild.className){
+                
+            }else{
+                this.enemyPon.push({
+                    direction : 'LB',
+                    elem : newCase
+                })
+                newCase = this.checkCaseLB(newCase)
+                if(newCase!==null && newCase!==undefined && newCase.childElementCount===0){
+                    newCase.classList.add('bg-blue')
+                    this.possibleMove.push({
+                        direction : 'LB',
+                        elem : newCase
+                    })
+                    this.loopCaseLB(newCase)
+                }else if(newCase===null || newCase===undefined || newCase.childElementCount===1){
+                    this.enemyPon.pop()
+                    return
+                }
+            }
         }else return 
     }
     loopCaseRT(oldCase) {
@@ -244,7 +328,9 @@ export default class Game {
             let y = oldCase.id.slice(-1)
             let x = oldCase.id.slice(0,1)
             let newCase = document.getElementById((parseInt(x)+1)+'-'+(parseInt(y)-1))
-            this.unTrucRT(newCase)
+            if(newCase!==null&&newCase!==undefined){
+                this.unTrucRT(newCase)
+            }else return
         }else return
     }
     loopCaseRB(oldCase){
@@ -252,7 +338,9 @@ export default class Game {
             let y = oldCase.id.slice(-1)
             let x = oldCase.id.slice(0,1)
             let newCase = document.getElementById((parseInt(x)+1)+'-'+(parseInt(y)+1))
-            this.unTrucRB(newCase)
+            if(newCase!==null&&newCase!==undefined){
+                this.unTrucRB(newCase)
+            }else return
         }else return
     }
     loopCaseLT(oldCase){
@@ -260,7 +348,9 @@ export default class Game {
             let y = oldCase.id.slice(-1)
             let x = oldCase.id.slice(0,1)
             let newCase = document.getElementById((parseInt(x)-1)+'-'+(parseInt(y)-1))
-            this.unTrucLT(newCase)
+            if(newCase!==null&&newCase!==undefined){
+                this.unTrucLT(newCase)
+            }else return
         }else return
     }
     loopCaseLB(oldCase){
@@ -268,7 +358,9 @@ export default class Game {
             let y = oldCase.id.slice(-1)
             let x = oldCase.id.slice(0,1)
             let newCase = document.getElementById((parseInt(x)-1)+'-'+(parseInt(y)+1))
-            this.unTrucLB(newCase)
+            if(newCase!==null&&newCase!==undefined){
+                this.unTrucLB(newCase)
+            }else return
         }else return
     }
     checkCaseRT(oldCase){
@@ -327,6 +419,23 @@ export default class Game {
                                         console.log('J1 , you win')
                                     }
                                 }
+                            }
+                        }else if(this.selectedPon[0].className.includes('j1') && ev.target.id.slice(-1)<1){
+                            this.selectedPon[0].classList.add('queen')
+                            this.endTurn()
+                            for(let i=0;i<document.getElementsByClassName("col").length;i++){
+                                document.getElementsByClassName("col")[i].classList.remove('bg-blue')
+                            }
+                        }else if(this.selectedPon[0].className.includes('j2') && ev.target.id.slice(-1)>8){
+                            this.selectedPon[0].classList.add('queen')
+                            this.endTurn()
+                            for(let i=0;i<document.getElementsByClassName("col").length;i++){
+                                document.getElementsByClassName("col")[i].classList.remove('bg-blue')
+                            }
+                        }else {
+                            this.endTurn()
+                            for(let i=0;i<document.getElementsByClassName("col").length;i++){
+                                document.getElementsByClassName("col")[i].classList.remove('bg-blue')
                             }
                         }
                     }else if(this.selectedPon[0].className.includes('j1') && ev.target.id.slice(-1)<1){
