@@ -70,13 +70,13 @@ export default class Game {
         this.enemyPon=[]
         this.possibleMove=[]
         console.log(this.enemyPon)
-        if(caseRT!==null && caseRT!==undefined && caseRT.childElementCount===0 && this.selectedPon[0].className.includes('j1')=== true||caseRT!==null && caseRT!==undefined && caseRT.childElementCount===0 && this.selectedPon[0].className.includes('queen')=== true){
+        if(caseRT!==null && caseRT!==undefined && caseRT.childElementCount===0 && this.selectedPon[0].className.includes('j1')=== true||caseRT!==null && caseRT!==undefined && caseRT.childElementCount===0 && this.selectedPon[0].id==='queen'){
             caseRT.classList.add('bg-blue')
             this.possibleMove.push({
                 direction : 'RT',
                 elem : caseRT,
             })
-            if(this.selectedPon[0].className.includes('queen')=== true){
+            if(this.selectedPon[0].id==='queen'){
                 this.unTrucRT(caseRT)
             }
         }else if(caseRT!==null && caseRT!==undefined && caseRT.childElementCount===1){
@@ -94,7 +94,7 @@ export default class Game {
                         direction : 'RT',
                         elem : caseRT
                     })
-                    if(this.selectedPon[0].className.includes('queen')=== true){
+                    if(this.selectedPon[0].id==='queen'){
                         this.unTrucRT(caseRT)
                     }
                 }else if(caseRT===null || caseRT===undefined || caseRT.childElementCount===1){
@@ -102,13 +102,13 @@ export default class Game {
                 }
             } 
         }       
-        if(caseRB!==null && caseRB!==undefined && caseRB.childElementCount===0 && this.selectedPon[0].className.includes('j2')=== true||caseRB!==null && caseRB!==undefined && caseRB.childElementCount===0 && this.selectedPon[0].className.includes('queen')=== true){
+        if(caseRB!==null && caseRB!==undefined && caseRB.childElementCount===0 && this.selectedPon[0].className.includes('j2')=== true||caseRB!==null && caseRB!==undefined && caseRB.childElementCount===0 && this.selectedPon[0].id==='queen'){
             caseRB.classList.add('bg-blue')
             this.possibleMove.push({
                 direction : 'RB',
                 elem : caseRB,
             })
-            if(this.selectedPon[0].className.includes('queen')=== true){
+            if(this.selectedPon[0].id==='queen'){
                 this.unTrucRB(caseRB)
             }
         }else if(caseRB!==null && caseRB!==undefined && caseRB.childElementCount===1){
@@ -126,7 +126,7 @@ export default class Game {
                         direction : 'RB',
                         elem : caseRB
                     })
-                    if(this.selectedPon[0].className.includes('queen')=== true){
+                    if(this.selectedPon[0].id==='queen'){
                         this.unTrucRB(caseRB)
                     }
                 }else if(caseRB===null || caseRB===undefined || caseRB.childElementCount===1){
@@ -134,13 +134,13 @@ export default class Game {
                 }
             }
         }
-        if(caseLT!==null && caseLT!==undefined && caseLT.childElementCount===0 && this.selectedPon[0].className.includes('j1')=== true||caseLT!==null && caseLT!==undefined && caseLT.childElementCount===0 && this.selectedPon[0].className.includes('queen')=== true){
+        if(caseLT!==null && caseLT!==undefined && caseLT.childElementCount===0 && this.selectedPon[0].className.includes('j1')=== true||caseLT!==null && caseLT!==undefined && caseLT.childElementCount===0 && this.selectedPon[0].id==='queen'){
             caseLT.classList.add('bg-blue')
             this.possibleMove.push({
                 direction : 'LT',
                 elem : caseLT,
             })
-            if(this.selectedPon[0].className.includes('queen')=== true){
+            if(this.selectedPon[0].id==='queen'){
                 this.unTrucLT(caseLT)
             }
         }else if(caseLT!==null && caseLT!==undefined && caseLT.childElementCount===1){
@@ -158,7 +158,7 @@ export default class Game {
                         direction : 'LT',
                         elem : caseLT
                     })
-                    if(this.selectedPon[0].className.includes('queen')=== true){
+                    if(this.selectedPon[0].id==='queen'){
                         this.unTrucLT(caseLT)
                     }
                 }else if(caseLT===null || caseLT===undefined || caseLT.childElementCount===1){
@@ -166,13 +166,13 @@ export default class Game {
                 }
             } 
         }
-        if(caseLB!==null && caseLB!==undefined && caseLB.childElementCount===0 && this.selectedPon[0].className.includes('j2')=== true||caseLB!==null && caseLB!==undefined && caseLB.childElementCount===0 && this.selectedPon[0].className.includes('queen')=== true){
+        if(caseLB!==null && caseLB!==undefined && caseLB.childElementCount===0 && this.selectedPon[0].className.includes('j2')=== true||caseLB!==null && caseLB!==undefined && caseLB.childElementCount===0 && this.selectedPon[0].id==='queen'){
             caseLB.classList.add('bg-blue')
             this.possibleMove.push({
                 direction : 'LB',
                 elem : caseLB,
             })
-            if(this.selectedPon[0].className.includes('queen')=== true){
+            if(this.selectedPon[0].id==='queen'){
                 this.unTrucLB(caseLB)
             }
         }else if(caseLB!==null && caseLB!==undefined && caseLB.childElementCount===1){
@@ -190,7 +190,7 @@ export default class Game {
                         direction : 'LB',
                         elem : caseLB
                     })
-                    if(this.selectedPon[0].className.includes('queen')=== true){
+                    if(this.selectedPon[0].id==='queen'){
                         this.unTrucLB(caseLB)
                     }
                 }else if(caseLB===null || caseLB===undefined || caseLB.childElementCount===1){
@@ -406,13 +406,13 @@ export default class Game {
                         if (enemyToMiam !== undefined && enemyToMiam!==null){
                             this.miam(enemyToMiam)
                             if(this.selectedPon[0].className.includes('j1') && ev.target.id.slice(-1)<1){
-                                this.selectedPon[0].classList.add('queen')
+                                this.selectedPon[0].id='queen'
                                 this.endTurn()
                                 for(let i=0;i<document.getElementsByClassName("col").length;i++){
                                     document.getElementsByClassName("col")[i].classList.remove('bg-blue')
                                 }
                             }else if(this.selectedPon[0].className.includes('j2') && ev.target.id.slice(-1)>8){
-                                this.selectedPon[0].classList.add('queen')
+                                this.selectedPon[0].id='queen'
                                 this.endTurn()
                                 for(let i=0;i<document.getElementsByClassName("col").length;i++){
                                     document.getElementsByClassName("col")[i].classList.remove('bg-blue')
@@ -434,13 +434,13 @@ export default class Game {
                                 }
                             }
                         }else if(this.selectedPon[0].className.includes('j1') && ev.target.id.slice(-1)<1){
-                            this.selectedPon[0].classList.add('queen')
+                            this.selectedPon[0].id='queen'
                             this.endTurn()
                             for(let i=0;i<document.getElementsByClassName("col").length;i++){
                                 document.getElementsByClassName("col")[i].classList.remove('bg-blue')
                             }
                         }else if(this.selectedPon[0].className.includes('j2') && ev.target.id.slice(-1)>8){
-                            this.selectedPon[0].classList.add('queen')
+                            this.selectedPon[0].id='queen'
                             this.endTurn()
                             for(let i=0;i<document.getElementsByClassName("col").length;i++){
                                 document.getElementsByClassName("col")[i].classList.remove('bg-blue')
@@ -452,13 +452,13 @@ export default class Game {
                             }
                         }
                     }else if(this.selectedPon[0].className.includes('j1') && ev.target.id.slice(-1)<1){
-                        this.selectedPon[0].classList.add('queen')
+                        this.selectedPon[0].id = 'queen'
                         this.endTurn()
                         for(let i=0;i<document.getElementsByClassName("col").length;i++){
                             document.getElementsByClassName("col")[i].classList.remove('bg-blue')
                         }
                     }else if(this.selectedPon[0].className.includes('j2') && ev.target.id.slice(-1)>8){
-                        this.selectedPon[0].classList.add('queen')
+                        this.selectedPon[0].id = "queen"
                         this.endTurn()
                         for(let i=0;i<document.getElementsByClassName("col").length;i++){
                             document.getElementsByClassName("col")[i].classList.remove('bg-blue')
