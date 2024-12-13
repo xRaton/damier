@@ -405,8 +405,21 @@ export default class Game {
                         let enemyToMiam = this.selectEnemyPon(ev)
                         if (enemyToMiam !== undefined && enemyToMiam!==null){
                             this.miam(enemyToMiam)
-                            this.promote(ev)
-                            this.caseLibre(ev.target)
+                            if(this.selectedPon[0].className.includes('j1') && ev.target.id.slice(-1)<1){
+                                this.selectedPon[0].classList.add('queen')
+                                this.endTurn()
+                                for(let i=0;i<document.getElementsByClassName("col").length;i++){
+                                    document.getElementsByClassName("col")[i].classList.remove('bg-blue')
+                                }
+                            }else if(this.selectedPon[0].className.includes('j2') && ev.target.id.slice(-1)>8){
+                                this.selectedPon[0].classList.add('queen')
+                                this.endTurn()
+                                for(let i=0;i<document.getElementsByClassName("col").length;i++){
+                                    document.getElementsByClassName("col")[i].classList.remove('bg-blue')
+                                }
+                            }else {
+                                this.caseLibre(ev.target)
+                            }
                             if(this.enemyPon.length===0){
                                 this.endTurn()
                                 for(let i=0;i<document.getElementsByClassName("col").length;i++){
@@ -473,20 +486,5 @@ export default class Game {
         let goodCase = this.possibleMove.find(({elem})=>elem.id===ev.target.id)
         let trajectoire = goodCase.direction
         return this.enemyPon.find(({direction})=>direction===trajectoire)
-    }
-    promote(ev){
-        if(this.selectedPon[0].className.includes('j1') && ev.target.id.slice(-1)<1){
-            this.selectedPon[0].classList.add('queen')
-            this.endTurn()
-            for(let i=0;i<document.getElementsByClassName("col").length;i++){
-                document.getElementsByClassName("col")[i].classList.remove('bg-blue')
-            }
-        }else if(this.selectedPon[0].className.includes('j2') && ev.target.id.slice(-1)>8){
-            this.selectedPon[0].classList.add('queen')
-            this.endTurn()
-            for(let i=0;i<document.getElementsByClassName("col").length;i++){
-                document.getElementsByClassName("col")[i].classList.remove('bg-blue')
-            }
-        }
     }
 }
