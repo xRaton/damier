@@ -69,7 +69,6 @@ export default class Game {
         }
         this.enemyPon=[]
         this.possibleMove=[]
-        console.log(this.enemyPon)
         if(caseRT!==null && caseRT!==undefined && caseRT.childElementCount===0 && this.selectedPon[0].className.includes('j1')=== true||caseRT!==null && caseRT!==undefined && caseRT.childElementCount===0 && this.selectedPon[0].id==='queen'){
             caseRT.classList.add('bg-blue')
             this.possibleMove.push({
@@ -77,7 +76,7 @@ export default class Game {
                 elem : caseRT,
             })
             if(this.selectedPon[0].id==='queen'){
-                this.initLoopRT(caseRT)
+                this.initLoopFRT(caseRT)
             }
         }else if(caseRT!==null && caseRT!==undefined && caseRT.childElementCount===1){
             if(this.selectedPon[0].className===caseRT.firstElementChild.className){
@@ -95,7 +94,7 @@ export default class Game {
                         elem : caseRT
                     })
                     if(this.selectedPon[0].id==='queen'){
-                        this.initLoopRT(caseRT)
+                        this.initLoopFRT(caseRT)
                     }
                 }else if(caseRT===null || caseRT===undefined || caseRT.childElementCount===1){
                     this.enemyPon.pop()
@@ -109,7 +108,7 @@ export default class Game {
                 elem : caseRB,
             })
             if(this.selectedPon[0].id==='queen'){
-                this.initLoopRB(caseRB)
+                this.initLoopFRB(caseRB)
             }
         }else if(caseRB!==null && caseRB!==undefined && caseRB.childElementCount===1){
             if(this.selectedPon[0].className===caseRB.firstElementChild.className){
@@ -127,7 +126,7 @@ export default class Game {
                         elem : caseRB
                     })
                     if(this.selectedPon[0].id==='queen'){
-                        this.initLoopRB(caseRB)
+                        this.initLoopFRB(caseRB)
                     }
                 }else if(caseRB===null || caseRB===undefined || caseRB.childElementCount===1){
                     this.enemyPon.pop()
@@ -141,7 +140,7 @@ export default class Game {
                 elem : caseLT,
             })
             if(this.selectedPon[0].id==='queen'){
-                this.initLoopLT(caseLT)
+                this.initLoopFLT(caseLT)
             }
         }else if(caseLT!==null && caseLT!==undefined && caseLT.childElementCount===1){
             if(this.selectedPon[0].className===caseLT.firstElementChild.className){
@@ -159,7 +158,7 @@ export default class Game {
                         elem : caseLT
                     })
                     if(this.selectedPon[0].id==='queen'){
-                        this.initLoopLT(caseLT)
+                        this.initLoopFLT(caseLT)
                     }
                 }else if(caseLT===null || caseLT===undefined || caseLT.childElementCount===1){
                     this.enemyPon.pop()
@@ -173,7 +172,7 @@ export default class Game {
                 elem : caseLB,
             })
             if(this.selectedPon[0].id==='queen'){
-                this.initLoopLB(caseLB)
+                this.initLoopFLB(caseLB)
             }
         }else if(caseLB!==null && caseLB!==undefined && caseLB.childElementCount===1){
             if(this.selectedPon[0].className===caseLB.firstElementChild.className){
@@ -191,7 +190,7 @@ export default class Game {
                         elem : caseLB
                     })
                     if(this.selectedPon[0].id==='queen'){
-                        this.initLoopLB(caseLB)
+                        this.initLoopFLB(caseLB)
                     }
                 }else if(caseLB===null || caseLB===undefined || caseLB.childElementCount===1){
                     this.enemyPon.pop()
